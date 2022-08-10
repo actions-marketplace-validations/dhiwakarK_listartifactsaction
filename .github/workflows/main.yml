@@ -9,6 +9,6 @@ jobs:
         id: hello
         uses: dhiwakark/listartifactsaction@main
         with:
-          token: secrets.GITHUB_TOKEN
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: 'dhiwakark'
           repo: 'listartifactsaction'
