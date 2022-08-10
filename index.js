@@ -9,6 +9,10 @@ async function run() {
     const repo = getRequiredInput('repo');
 
     const octokit = new Octokit({ auth: `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` });
+    const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
+        owner: owner,
+        repo: repo,
+      });
 
   } catch (error) {
     core.setFailed(error.message);
