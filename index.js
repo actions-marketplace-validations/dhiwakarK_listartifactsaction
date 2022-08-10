@@ -8,7 +8,7 @@ async function run() {
     // Ensure that the output directory exists before we our limited API usage
     // await io.mkdirP(outputDir)
 
-    const octokit = githubClient.create(token, 5)
+    const octokit = github.create(token, 5)
       , orgActivity = new OrganizationActivity(octokit)
     ;
     
