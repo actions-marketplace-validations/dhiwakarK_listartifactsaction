@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const githubClient = require('./src/github');
 
 async function run() {
   try {
@@ -8,8 +9,7 @@ async function run() {
     // Ensure that the output directory exists before we our limited API usage
     // await io.mkdirP(outputDir)
 
-    const octokit = new Octokit({ auth: token });
-  
+    const octokit = githubClient.create(token, 5);  
     const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
         owner: context.repo.owner,
         repo: context.repo.repo,
