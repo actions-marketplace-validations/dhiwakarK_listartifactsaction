@@ -1,5 +1,5 @@
-name: 'Dhiwakar's Hello World'
-description: 'Greet someone and record the time'
+name: 'List repository artifacts'
+description: 'List repository artifacts along with the storage consumed'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
