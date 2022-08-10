@@ -8,7 +8,7 @@ async function run() {
     const owner = getRequiredInput('owner');
     const repo = getRequiredInput('repo');
 
-    const octokit = new Octokit({ auth: 'token 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' });
+    const octokit = new Octokit({ auth: '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' });
     const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
         owner: owner,
         repo: repo,
