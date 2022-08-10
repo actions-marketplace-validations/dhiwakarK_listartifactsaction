@@ -2,14 +2,23 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  const getArtifactsForRepo = await github.rest.actions.listArtifactsForRepo({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+    });
+  const artifacts = getArtifactsForRepo.data.artifacts;
+  console.log('Artifact Count');
+  console.log(artifacts.length);
+
+  var size = 0;
+  for (let i = 0; i < artifacts.length; i++) {
+      console.log('Artifact Name');
+      console.log(artifacts[i].name);
+      console.log('Artifact Size');
+      console.log(artifacts[i].size_in_bytes);
+      size += artifacts[i].size_in_bytes / 1000000.0;
+  }
+  console.log('Total Size of Artifacts' + size + ' MB');
 } catch (error) {
   core.setFailed(error.message);
 }
