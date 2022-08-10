@@ -41,3 +41,7 @@ async function run() {
 }
 
 run();
+
+function getRequiredInput(name) {
+  return core.getInput(name, {required: true});
+}
