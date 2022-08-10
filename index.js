@@ -3,18 +3,12 @@ const github = require('@actions/github');
 
 async function run() {
   try {
-    const since = core.getInput('since')
-      , days = core.getInput('activity_days')
-      , token = getRequiredInput('token')
-      , outputDir = getRequiredInput('outputDir')
-      , organization = getRequiredInput('organization')
-      , maxRetries = getRequiredInput('octokit_max_retries')
-    ;
+    const since = token = getRequiredInput('token');
     
     // Ensure that the output directory exists before we our limited API usage
-    await io.mkdirP(outputDir)
+    // await io.mkdirP(outputDir)
 
-    const octokit = githubClient.create(token, maxRetries)
+    const octokit = githubClient.create(token, 5)
       , orgActivity = new OrganizationActivity(octokit)
     ;
     
