@@ -4,9 +4,9 @@ const { Octokit } = require("octokit");
 
 async function run() {
   try {
-    const githubToken = getRequiredInput('token')
-    const owner = getRequiredInput('owner')
-    const repo = getRequiredInput('repo')
+    const githubToken = getRequiredInput('token');
+    const owner = getRequiredInput('owner');
+    const repo = getRequiredInput('repo');
 
     const octokit = new Octokit({
        auth: 'token ${githubToken}' ,
