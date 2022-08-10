@@ -9,7 +9,7 @@ async function run() {
     const repo = getRequiredInput('repo');
 
     const octokit = new Octokit({ 
-      auth: "token ${{ secrets.GITHUB_TOKEN }}",
+      auth: `token ${{ secrets.GITHUB_TOKEN }}` ,
      });
     const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
         owner: owner,
