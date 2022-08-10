@@ -3,7 +3,22 @@ const github = require('@actions/github');
 
 async function run() {
   try {
-    const getArtifactsForRepo = await listArtifactsForRepo({
+    const since = core.getInput('since')
+      , days = core.getInput('activity_days')
+      , token = getRequiredInput('token')
+      , outputDir = getRequiredInput('outputDir')
+      , organization = getRequiredInput('organization')
+      , maxRetries = getRequiredInput('octokit_max_retries')
+    ;
+    
+    // Ensure that the output directory exists before we our limited API usage
+    await io.mkdirP(outputDir)
+
+    const octokit = githubClient.create(token, maxRetries)
+      , orgActivity = new OrganizationActivity(octokit)
+    ;
+    
+    const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
         owner: context.repo.owner,
         repo: context.repo.repo,
       });
