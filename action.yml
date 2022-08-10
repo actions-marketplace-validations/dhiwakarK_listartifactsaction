@@ -5,6 +5,12 @@ inputs:
     description: 'GitHub Token'
     required: true
     default: GITHUB_TOKEN
+  owner:  # id of input
+    description: 'Owner'
+    required: true
+  repo:  # id of input
+    description: 'Repository'
+    required: true
 runs:
   using: 'node16'
   main: 'index.js'

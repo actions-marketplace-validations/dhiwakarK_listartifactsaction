@@ -5,12 +5,15 @@ const { Octokit } = require("octokit");
 async function run() {
   try {
     const githubToken = getRequiredInput('token')
+    const owner = getRequiredInput('owner')
+    const repo = getRequiredInput('repo')
+
     const octokit = new Octokit({
        auth: 'token ${githubToken}' ,
       });
     const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
-        owner: context.repo.owner,
-        repo: context.repo.repo,
+        owner: owner,
+        repo: repo,
       });
     const artifacts = getArtifactsForRepo.data.artifacts;
     console.log('Artifact Count');
