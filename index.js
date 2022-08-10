@@ -8,7 +8,9 @@ async function run() {
     const owner = getRequiredInput('owner');
     const repo = getRequiredInput('repo');
 
-      } catch (error) {
+    const octokit = new Octokit({ auth: `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` });
+
+  } catch (error) {
     core.setFailed(error.message);
   }
 }
