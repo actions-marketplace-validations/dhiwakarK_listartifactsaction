@@ -7,6 +7,10 @@ async function run() {
     const githubToken = getRequiredInput('token');
     const owner = getRequiredInput('owner');
     const repo = getRequiredInput('repo');
+
+      } catch (error) {
+    core.setFailed(error.message);
+  }
 }
 
 run();
