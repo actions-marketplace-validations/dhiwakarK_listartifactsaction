@@ -1,13 +1,10 @@
 name: 'List repository artifacts'
 description: 'List repository artifacts along with the storage consumed'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  token:  # id of input
+    description: 'GitHub Token'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: GITHUB_TOKEN
 runs:
   using: 'node16'
   main: 'index.js'
