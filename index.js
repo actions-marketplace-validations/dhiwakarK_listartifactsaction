@@ -1,15 +1,9 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
-const githubClient = require('./src/github');
+const Octokit = require("octokit");
 
 async function run() {
   try {
-    const since = token = getRequiredInput('token');
-    
-    // Ensure that the output directory exists before we our limited API usage
-    // await io.mkdirP(outputDir)
-
-    const octokit = githubClient.create(token, 5);  
+    const octokit = new Octokit({ auth: token });
     const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
         owner: context.repo.owner,
         repo: context.repo.repo,
