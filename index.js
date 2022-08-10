@@ -3,7 +3,7 @@ const Octokit = require("octokit");
 
 async function run() {
   try {
-    const octokit = new Octokit({ auth: token });
+    const octokit = new Octokit({ auth: `${token}` });
     const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
         owner: context.repo.owner,
         repo: context.repo.repo,
