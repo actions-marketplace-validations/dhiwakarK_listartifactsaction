@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 async function run() {
   try {
-    const getArtifactsForRepo = await github.rest.actions.listArtifactsForRepo({
+    const getArtifactsForRepo = await listArtifactsForRepo({
         owner: context.repo.owner,
         repo: context.repo.repo,
       });
