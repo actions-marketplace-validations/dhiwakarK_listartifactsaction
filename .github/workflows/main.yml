@@ -10,5 +10,5 @@ jobs:
         uses: dhiwakark/listartifactsaction@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          owner: 'dhiwakark'
+          owner: 'dhiwakarK'
           repo: 'listartifactsaction'
