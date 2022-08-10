@@ -8,10 +8,8 @@ async function run() {
     // Ensure that the output directory exists before we our limited API usage
     // await io.mkdirP(outputDir)
 
-    const octokit = github.create(token, 5)
-      , orgActivity = new OrganizationActivity(octokit)
-    ;
-    
+    const octokit = new Octokit({ auth: token });
+  
     const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
         owner: context.repo.owner,
         repo: context.repo.repo,
