@@ -5,7 +5,9 @@ const Octokit = require("octokit");
 async function run() {
   try {
     const githubToken = getRequiredInput('token')
-    const octokit = new Octokit({ auth: `${githubToken}` });
+    const octokit = new Octokit({
+       auth: 'token ${githubToken}' ,
+      });
     const getArtifactsForRepo =  await octokit.rest.actions.listArtifactsForRepo({
         owner: context.repo.owner,
         repo: context.repo.repo,
